@@ -21,4 +21,12 @@ public class TestFile {
 		List<String> result = Files.lines(Paths.get(outputFile)).collect(Collectors.toList());
 		assertTrue(result.size() > 0);
 	}
+	
+	@Test
+	public void TestDeleteFile() throws IOException {
+		String outputFile = "Testing_File2.txt";
+		FileProcessor.makeNotes(outputFile, "10 April 2010");
+		FileProcessor.deleteNotes(outputFile);
+		assertTrue(!Files.exists(Paths.get(outputFile)));
+	}
 }
